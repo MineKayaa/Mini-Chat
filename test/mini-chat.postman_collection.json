@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "85c0e78a-3696-4163-a5b0-3cf25c23fad2",
+		"name": "mini-chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7849097"
+	},
+	"item": [
+		{
+			"name": "chat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/chat?input=hi",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"chat"
+					],
+					"query": [
+						{
+							"key": "chat_id",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "input",
+							"value": "hi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-messages?chat_id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-messages"
+					],
+					"query": [
+						{
+							"key": "chat_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

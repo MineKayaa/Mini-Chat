@@ -37,17 +37,18 @@ class dal:
     def get_messages(chat_id: str):
         my_collection = dal.get_collection()
         result = my_collection.find({"chat_id": chat_id})
+        messages = ""
         if result:    
             for doc in result:
                 chat_id = doc['chat_id']
                 messages_count = len(doc['messages'])
-                messages = ' '.join(doc['messages'])
-                print("%s has %x message." %(chat_id, messages_count))
-                print(messages)
-                
+                messages += ' '.join(doc['messages'])
+                messages += "\n"
+            return messages
         else:
             print("No documents found.")
-            print("\n")
+            return ""
+        
     def insert_message(chat_id: str, ai_message : str, human_message : str):
         my_collection = dal.get_collection()
         chat = [{ "chat_id": chat_id, "messages": [human_message , ai_message] }]
@@ -59,3 +60,16 @@ class dal:
             print("I inserted document.")
             print("\n")
     
+    def get_last_chat_id():
+        my_collection = dal.get_collection()
+        result = my_collection.find()
+        chat_array = []
+        if result:    
+            for doc in result:
+                chat_id = doc['chat_id']
+                chat_array.append(int(chat_id))
+            return max(chat_array)
+        else:
+            print("No documents found.")
+            return 0
+        
