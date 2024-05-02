@@ -32,33 +32,27 @@ class dal:
     def get_collection():
         db = client.mini_chat_db
         my_collection = db["chat_history"]
-        return my_collection
-    
+        return my_collection 
     def get_messages(chat_id: str):
         my_collection = dal.get_collection()
         result = my_collection.find({"chat_id": chat_id})
         messages = ""
         if result:    
             for doc in result:
-                chat_id = doc['chat_id']
-                messages_count = len(doc['messages'])
                 messages += ' '.join(doc['messages'])
                 messages += "\n"
             return messages
         else:
             print("No documents found.")
-            return ""
-        
+            return ""        
     def insert_message(chat_id: str, ai_message : str, human_message : str):
         my_collection = dal.get_collection()
         chat = [{ "chat_id": chat_id, "messages": [human_message , ai_message] }]
         try: 
             result = my_collection.insert(chat)
+            return result
         except pymongo.errors.OperationFailure:
             print("An authentication error was received. Are you sure your database user is authorized to perform write operations?")
-        else:
-            print("I inserted document.")
-            print("\n")
     
     def get_last_chat_id():
         my_collection = dal.get_collection()
