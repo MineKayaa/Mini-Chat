@@ -12,7 +12,7 @@ class chatbotService:
             chat_history = dal.dal.get_messages(chat_id)
             print(chat_history)
     
-        ai_message =  utils.utils.get_agent(input, chat_history)
+        ai_message =  utils.utils.get_agent(input, chat_history, chat_id)
 
         dal.dal.insert_message(chat_id, ai_message , input)
         return  ai_message
