@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/chat?input=hi",
+					"raw": "http://127.0.0.1:8000/chat?chat_id=6&input=cool text Save To VectorDB",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -27,12 +27,11 @@
 					"query": [
 						{
 							"key": "chat_id",
-							"value": "",
-							"disabled": true
+							"value": "6"
 						},
 						{
 							"key": "input",
-							"value": "hi"
+							"value": "cool text Save To VectorDB"
 						}
 					]
 				}
@@ -45,7 +44,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/get-messages?chat_id=1",
+					"raw": "http://127.0.0.1:8000/get-messages?chat_id=6",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -60,7 +59,7 @@
 					"query": [
 						{
 							"key": "chat_id",
-							"value": "1"
+							"value": "6"
 						}
 					]
 				}
